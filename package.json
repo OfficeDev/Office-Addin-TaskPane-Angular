@@ -1,9 +1,9 @@
 {
-  "name": "office-addin-taskpane",
+  "name": "office-addin-taskpane-angular",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane.git"
+    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane-Angular.git"
   },
   "license": "MIT",
   "config": {
@@ -24,6 +24,11 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@angular/common": "^5.2.9",
+    "@angular/compiler": "^5.2.9",
+    "@angular/core": "^5.2.9",
+    "@angular/platform-browser": "^5.2.9",
+    "@angular/platform-browser-dynamic": "^5.2.9",
     "@microsoft/office-js-helpers": "^1.0.1",
     "es6-promise": "^4.2.5",
     "jquery": "^3.1.1",
