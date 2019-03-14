@@ -19,6 +19,11 @@ module.exports = (env, options) => {
     module: {
       rules: [
         {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          use: 'babel-loader'
+        },
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: "ts-loader"
@@ -50,7 +55,7 @@ module.exports = (env, options) => {
       new HtmlWebpackPlugin({
         filename: "ribbon.html",
         template: "./src/ribbon/ribbon.html",
-        chunks: ["ribbon"]
+        chunks: ["polyfill", "ribbon"]
       }),
     ],
     devServer: {
