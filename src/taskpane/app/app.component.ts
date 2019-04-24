@@ -17,23 +17,23 @@ export default class AppComponent {
     async run() {
         switch (Office.context.host) {
           case Office.HostType.Excel:
-            const excelTaskpane = new excel.default();
-            return excelTaskpane.run();
+            const excelComponent = new excel.default();
+            return excelComponent.run();
           case Office.HostType.OneNote:
-            const onenoteTaskpane = new onenote.default();
-            return onenoteTaskpane.run();
+            const onenoteComponent = new onenote.default();
+            return onenoteComponent.run();
           case Office.HostType.Outlook:
-            const outlookTaskpane = new outlook.default();
-            return outlookTaskpane.run();
+            const outlookComponent = new outlook.default();
+            return outlookComponent.run();
           case Office.HostType.PowerPoint:
-            const powerpointTaskpane = new powerpoint.default();
-            return powerpointTaskpane.run();
+            const powerpointComponent = new powerpoint.default();
+            return powerpointComponent.run();
           case Office.HostType.Project:
-            const projectTaskpane = new project.default();
-            return projectTaskpane.run();
+            const projectComponent = new project.default();
+            return projectComponent.run();
           case Office.HostType.Word:
-            const wordTaskpane = new word.default();
-            return wordTaskpane.run();
+            const wordComponent = new word.default();
+            return wordComponent.run();
         }
       }
 }
