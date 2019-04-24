@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as OfficeHelpers from "@microsoft/office-js-helpers";
 import * as excel from "./excel.app.component";
 import * as onenote from "./onenote.app.component";
 import * as outlook from "./outlook.app.component";
@@ -18,17 +17,23 @@ export default class AppComponent {
     async run() {
         switch (Office.context.host) {
           case Office.HostType.Excel:
-            return excel.run();
+            const excelTaskpane = new excel.default();
+            return excelTaskpane.run();
           case Office.HostType.OneNote:
-            return onenote.run();
+            const onenoteTaskpane = new onenote.default();
+            return onenoteTaskpane.run();
           case Office.HostType.Outlook:
-            return outlook.run();
+            const outlookTaskpane = new outlook.default();
+            return outlookTaskpane.run();
           case Office.HostType.PowerPoint:
-            return powerpoint.run();
+            const powerpointTaskpane = new powerpoint.default();
+            return powerpointTaskpane.run();
           case Office.HostType.Project:
-            return project.run();
+            const projectTaskpane = new project.default();
+            return projectTaskpane.run();
           case Office.HostType.Word:
-            return word.run();
+            const wordTaskpane = new word.default();
+            return wordTaskpane.run();
         }
       }
 }
