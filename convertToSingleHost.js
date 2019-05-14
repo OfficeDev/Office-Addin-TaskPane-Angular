@@ -29,7 +29,7 @@ async function convertProjectToSingleHost(host) {
   // delete all host specific files
   hosts.forEach(async function (host) {
     await unlinkFileAsync(`./manifest.${host}.xml`);
-    await unlinkFileAsync(`/src/taskpane/app/${host}.app.component.ts`);
+    await unlinkFileAsync(`./src/taskpane/app/${host}.app.component.ts`);
   });
 
   // delete this script
