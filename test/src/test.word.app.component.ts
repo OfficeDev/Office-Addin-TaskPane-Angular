@@ -12,15 +12,14 @@ let testValues: any = [];
 })
 export default class AppComponent {
     welcomeMessage = 'Welcome';
-    constructor(override: boolean = false) {
-        if (!override) {
-            Office.onReady(async () => {
-                const testServerResponse: object = await pingTestServer(port);
-                if (testServerResponse["status"] == 200) {
-                    this.runTest();
-                }
-            });
-        }
+    constructor() {
+        Office.onReady(async () => {
+            const testServerResponse: object = await pingTestServer(port);
+            if (testServerResponse["status"] == 200) {
+                this.runTest();
+            }
+        });
+
     }
 
     async runTest(): Promise<void> {

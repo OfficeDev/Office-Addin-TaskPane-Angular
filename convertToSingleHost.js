@@ -44,7 +44,9 @@ async function convertProjectToSingleHost(host) {
 
     // delete all host-specific test files after converting to single host
     hosts.forEach(async function (host) {
-      await unlinkFileAsync(`./test/src/test.${host}.app.component.ts`);
+      if (host === "excel" || host === "word") {
+        await unlinkFileAsync(`./test/src/test.${host}.app.component.ts`);
+      }
     });
   }
   else {

@@ -3,7 +3,7 @@ import { pingTestServer, sendTestResults } from "office-addin-test-helpers";
 import * as testHelpers from "./test-helpers";
 import * as excel from "../../src/taskpane/app/excel.app.component";
 const template = require('./../../src/taskpane/app/app.component.html');
-const port: number = 4201; 
+const port: number = 4201;
 let testValues: any = [];
 
 @Component({
@@ -12,15 +12,13 @@ let testValues: any = [];
 })
 export default class AppComponent {
     welcomeMessage = 'Welcome';
-    constructor(override: boolean = false) {
-        if (!override) {
-            Office.onReady(async () => {
-                const testServerResponse: object = await pingTestServer(port);
-                if (testServerResponse["status"] == 200) {
-                    this.runTest();
-                }
-            });
-        }
+    constructor() {
+        Office.onReady(async () => {
+            const testServerResponse: object = await pingTestServer(port);
+            if (testServerResponse["status"] == 200) {
+                this.runTest();
+            }
+        });
     }
 
     async runTest(): Promise<void> {
@@ -48,6 +46,6 @@ export default class AppComponent {
             } catch {
                 reject();
             }
-        });        
+        });
     }
 }
