@@ -33,18 +33,18 @@ async function convertProjectToSingleHost(host) {
   // delete all test files by default for now - eventually we want to convert the tests by default
   if (convertTest && (host === "excel" || host === "word")) {
     // copy over host-specific taskpane test code to test-taskpane.ts
-    const testTaskpaneContent = await readFileAsync(`./test/src/${host}-test-taskpane.ts`, "utf8");
-    const updatedTestTaskpaneContent = testTaskpaneContent.replace(`../../src/taskpane/${host}`, `./src/taskpane/taskpane`);
-    await writeFileAsync(`./test/src/test-taskpane.ts`, updatedTestTaskpaneContent);
+    const testTaskpaneContent = await readFileAsync(`./test/src/test.${host}.app.component.ts`, "utf8");
+    const updatedTestTaskpaneContent = testTaskpaneContent.replace(`../../src/taskpane/app/${host}.app.component`, `../../src/taskpane/app/app.component`);
+    await writeFileAsync(`./test/src/test.app.component.ts`, updatedTestTaskpaneContent);
 
     // update ui-test.ts to only run against specified host
     const testContent = await readFileAsync(`./test/ui-test.ts`, "utf8");
-    const updatedTestContent = testContent.replace(`const hosts = ["Excel", "Word"]`, `const hosts = ["${host}"]`);
+    const updatedTestContent = testContent.replace(`const hosts = ["Excel", "Word"]`, `const hosts = ["${host == "excel" ? "Excel" : "Word"}"]`);
     await writeFileAsync(`./test/ui-test.ts`, updatedTestContent);
 
     // delete all host-specific test files after converting to single host
     hosts.forEach(async function (host) {
-      await unlinkFileAsync(`./test/src/${host}-test-taskpane.ts`);
+      await unlinkFileAsync(`./test/src/test.${host}.app.component.ts`);
     });
   }
   else {
@@ -103,14 +103,6 @@ async function updatePackageJsonForSingleHost(host) {
 
   // write updated json to file
   await writeFileAsync(packageJson, JSON.stringify(content, null, 2));
-}
-
-async function updateLaunchJsonForSingleHost(host) {
-  // update launch.json to reflect selected host
-  const launchJson = `.vscode/package.json`;
-  const data = await readFileAsync(launchJson, "utf8");
-  let content = JSON.parse(data);
-
 }
 
 function deleteFolder(folder) {
