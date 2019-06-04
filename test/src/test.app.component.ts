@@ -17,10 +17,10 @@ export default class AppComponent {
                 const testServerResponse: object = await pingTestServer(port);
                 if (testServerResponse["status"] == 200) {
                     if (info.host === Office.HostType.Excel){
-                        const excel = new excelComponent.default(true /* override */);
+                        const excel = new excelComponent.default();
                         return excel.runTest();
                     } else {
-                        const word = new wordComponent.default(true /* override */);
+                        const word = new wordComponent.default();
                         return word.runTest();
                     }
                 }
