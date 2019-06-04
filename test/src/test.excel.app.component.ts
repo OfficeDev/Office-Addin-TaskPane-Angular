@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { pingTestServer, sendTestResults } from "office-addin-test-helpers";
 import * as testHelpers from "./test-helpers";
 import * as excel from "../../src/taskpane/app/excel.app.component";
-const port: number = 4201;
 const template = require('./../../src/taskpane/app/app.component.html');
+const port: number = 4201; 
 let testValues: any = [];
 
 @Component({
@@ -12,6 +12,16 @@ let testValues: any = [];
 })
 export default class AppComponent {
     welcomeMessage = 'Welcome';
+    constructor(override: boolean = false) {
+        if (!override) {
+            Office.onReady(async () => {
+                const testServerResponse: object = await pingTestServer(port);
+                if (testServerResponse["status"] == 200) {
+                    this.runTest();
+                }
+            });
+        }
+    }
 
     async runTest(): Promise<void> {
         return new Promise<void>(async (resolve, reject) => {

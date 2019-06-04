@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import * as excel from "./test.excel.app.component";
-import * as word from "./test.word.app.component";
+import { pingTestServer } from "office-addin-test-helpers";
+import * as excelComponent from "./test.excel.app.component";
+import * as wordComponent from "./test.word.app.component";
 const template = require('./../../src/taskpane/app/app.component.html');
+const port: number = 4201;
 
 @Component({
     selector: 'app-home',
@@ -9,14 +11,20 @@ const template = require('./../../src/taskpane/app/app.component.html');
 })
 export default class AppComponent {
     welcomeMessage = 'Welcome';
-
-    async run() {
-        switch (Office.context.host) {
-            case Office.HostType.Excel:
-                const excelComponent = new excel.default();
-                return excelComponent.runTest();    
-                const wordComponent = new word.default();
-                return wordComponent.runTest();
-        }
+    constructor() {
+        Office.onReady(async (info) => {
+            if (info.host === Office.HostType.Excel || info.host === Office.HostType.Word) {
+                const testServerResponse: object = await pingTestServer(port);
+                if (testServerResponse["status"] == 200) {
+                    if (info.host === Office.HostType.Excel){
+                        const excel = new excelComponent.default(true /* override */);
+                        return excel.runTest();
+                    } else {
+                        const word = new wordComponent.default(true /* override */);
+                        return word.runTest();
+                    }
+                }
+            }
+        });
     }
 }
