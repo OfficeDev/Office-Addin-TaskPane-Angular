@@ -23,7 +23,7 @@ hosts.forEach(function (host) {
             assert.equal(serverResponse["status"], 200);
 
             // Call startDebugging to start dev-server and sideload
-            const devServerCmd = `npm run dev-server-test`;
+            const devServerCmd = `npm run dev-server -- --config ./test/webpack.config.js`;
             const sideloadCmd = `node ./node_modules/office-toolbox/app/office-toolbox.js sideload -m ${manifestPath} -a ${host}`;
             await startDebugging(manifestPath, AppType.Desktop, undefined, undefined, devServerCmd, undefined,
                 undefined, undefined, undefined, sideloadCmd);
@@ -35,7 +35,7 @@ hosts.forEach(function (host) {
                 assert.equal(testValues.length > 0, true);
             });
             it("Validate expected result name", async function () {
-                assert.equal(testValues[0].resultName, host === "Excel" ? "fill-color" : "output-message");
+                assert.equal(testValues[0].resultName, host.toLowerCase() === "excel" ? "fill-color" : "output-message");
             });
             it("Validate expected result", async function () {
                 assert.equal(testValues[0].resultValue, testValues[0].expectedValue);
