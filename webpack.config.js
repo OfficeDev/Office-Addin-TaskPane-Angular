@@ -30,9 +30,15 @@ module.exports = async (env, options) => {
           use: "ts-loader"
         },
         {
-          test: /\.html$/,
-          exclude: /node_modules/,
-          use: "html-loader"
+          test: /\.(html)$/,
+          exclude: "/node_modules/",
+          use: [{
+            loader: 'html-loader',
+            options: {
+              minimize: true,
+              caseSensitive: true
+            }
+          }]
         },
         {
           test: /\.(png|jpg|jpeg|gif)$/,
