@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-const template = require('./app.component.html');
+import { Component } from "@angular/core";
+const template = require("./app.component.html");
+/* global require, Word */
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   template
 })
 export default class AppComponent {
-  welcomeMessage = 'Welcome';
+  welcomeMessage = "Welcome";
 
   async run() {
     return Word.run(async context => {
