@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
-const template = require('./app.component.html');
+import { Component } from "@angular/core";
+const template = require("./app.component.html");
+/* global require */
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   template
 })
 export default class AppComponent {
-  welcomeMessage = 'Welcome';
+  welcomeMessage = "Welcome";
 
   async run() {
-  /**
-  * Insert your Project code here
-  */
+    /**
+     * Insert your Project code here
+     */
   }
 }
