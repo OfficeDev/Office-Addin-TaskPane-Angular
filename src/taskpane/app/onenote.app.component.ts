@@ -1,4 +1,8 @@
 import { Component } from "@angular/core";
+// images references in the manifest
+import "../../../assets/icon-16.png";
+import "../../../assets/icon-32.png";
+import "../../../assets/icon-80.png";
 const template = require("./app.component.html");
 /* global require */
 
