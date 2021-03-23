@@ -88,6 +88,7 @@ async function updatePackageJsonForSingleHost(host) {
     if (key.startsWith("sideload:")
       || key.startsWith("unload:")
       || key === "convert-to-single-host"
+      || key === "start:desktop:outlook"
     ) {
       delete content.scripts[key];
     }
@@ -145,7 +146,6 @@ function deleteFolder(folder) {
 async function deleteSupportFiles()
 {
     await unlinkFileAsync("CONTRIBUTING.md");
-    await unlinkFileAsync(".gitignore");
     await unlinkFileAsync("LICENSE");
     await unlinkFileAsync("README.md");
     await unlinkFileAsync("./convertToSingleHost.js");
