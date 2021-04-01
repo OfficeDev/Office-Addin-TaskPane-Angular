@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const devCerts = require("office-addin-dev-certs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -14,7 +16,7 @@ module.exports = async (env, options) => {
   const config = {
     devtool: "source-map",
     entry: {
-      polyfill: "@babel/polyfill",
+      polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: "./src/taskpane/taskpane.ts",
       commands: "./src/commands/commands.ts"
     },
@@ -26,7 +28,12 @@ module.exports = async (env, options) => {
         {
           test: /\.ts$/,
           exclude: /node_modules/,
-          use: "babel-loader"
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ['@babel/preset-typescript']
+            }
+          }
         },
         {
           test: /\.tsx?$/,
