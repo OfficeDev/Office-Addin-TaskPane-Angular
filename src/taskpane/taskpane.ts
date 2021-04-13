@@ -13,5 +13,5 @@ Office.initialize = () => {
   // Bootstrap the app
   platformBrowserDynamic()
     .bootstrapModule(AppModule)
-    .catch(error => console.error(error));
+    .catch((error) => console.error(error));
 };

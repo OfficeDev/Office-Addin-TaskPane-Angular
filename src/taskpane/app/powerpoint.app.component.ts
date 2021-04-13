@@ -8,7 +8,7 @@ const template = require("./app.component.html");
 
 @Component({
   selector: "app-home",
-  template
+  template,
 })
 export default class AppComponent {
   welcomeMessage = "Welcome";
@@ -20,9 +20,9 @@ export default class AppComponent {
     Office.context.document.setSelectedDataAsync(
       "Hello World!",
       {
-        coercionType: Office.CoercionType.Text
+        coercionType: Office.CoercionType.Text,
       },
-      result => {
+      (result) => {
         if (result.status === Office.AsyncResultStatus.Failed) {
           console.error(result.error.message);
         }
