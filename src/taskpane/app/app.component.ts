@@ -5,12 +5,11 @@ import * as outlook from "./outlook.app.component";
 import * as powerpoint from "./powerpoint.app.component";
 import * as project from "./project.app.component";
 import * as word from "./word.app.component";
-const template = require("./app.component.html");
-/* global Office, require */
+/* global Office */
 
 @Component({
   selector: "app-home",
-  template,
+  templateUrl: "./app.component.html",
 })
 export default class AppComponent {
   welcomeMessage = "Welcome";
