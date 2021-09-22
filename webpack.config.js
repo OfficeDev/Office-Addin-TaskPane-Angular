@@ -23,7 +23,6 @@ module.exports = async (env, options) => {
       commands: "./src/commands/commands.ts",
     },
     output: {
-      sourceMapFilename: "[name].js.map",
       devtoolModuleFilenameTemplate: "webpack:///[resource-path]?[loaders]",
       clean: true,
     },
