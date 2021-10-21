@@ -11,6 +11,7 @@ const testPackages = [
   "@types/node",
   "current-processes",
   "mocha",
+  "office-addin-mock",
   "office-addin-test-helpers",
   "office-addin-test-server",
   "ts-node",
@@ -75,6 +76,9 @@ async function convertProjectToSingleHost(host) {
 
   // delete the .github folder
   deleteFolder(path.resolve(`./.github`));
+
+  // delete CI/CD pipeline files
+  deleteFolder(path.resolve(`./.azure-devops`));
 
   // delete repo support files
   await deleteSupportFiles();
@@ -157,8 +161,7 @@ function deleteFolder(folder) {
   }
 }
 
-async function deleteSupportFiles()
-{
+async function deleteSupportFiles() {
   await unlinkFileAsync("CONTRIBUTING.md");
   await unlinkFileAsync("LICENSE");
   await unlinkFileAsync("README.md");
