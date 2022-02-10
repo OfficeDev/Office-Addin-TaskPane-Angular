@@ -2,7 +2,7 @@
  
 This repository contains the source code used by the [Yo Office generator](https://github.com/OfficeDev/generator-office) when you create a new Office Add-in that appears in the task pane. You can also use this repository as a sample to base your own project from if you choose not to use the generator. 
 
-*Note that current versions of Angular do not support IE.  This means that versions of office that use the IE version of the web view will not work with and Angular base Office Add-in
+*Note that current versions of Angular do not support IE (Internet Explorer).  This means that versions of office that use the IE version of the web view will not work with and Angular base Office Add-in
 
 ## TypeScript
 
