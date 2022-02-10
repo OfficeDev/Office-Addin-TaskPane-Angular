@@ -29,19 +29,6 @@ jobs:
         parameters:
           webView: "edge-legacy"
 
-  - job: WebView_IE
-    pool:
-      name: OE-OfficeClientApps
-    steps:
-      - template: ./install.yml
-      - template: ./lint.yml
-      - template: ./build.yml
-      - template: ./devcerts.yml
-      - template: ./edgewebview.yml
-      - template: ./test.yml
-        parameters:
-          webView: "ie"
-
   - job: Mac
     pool:
       name: OPX Mac Dogfood Pool
