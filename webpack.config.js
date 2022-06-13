@@ -49,6 +49,9 @@ module.exports = async (env, options) => {
           test: /\.html$/,
           exclude: /node_modules/,
           use: "html-loader",
+          options: {
+            minimize: false,
+          },
         },
         {
           test: /\.(png|jpg|jpeg|gif|ico)$/,
