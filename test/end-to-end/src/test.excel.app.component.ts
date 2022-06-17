@@ -1,22 +1,22 @@
-import { Component } from "@angular/core";
-import { pingTestServer, sendTestResults } from "office-addin-test-helpers";
-import * as testHelpers from "./test-helpers";
-import * as excel from "../../../src/taskpane/app/excel.app.component";
+import { Component } from '@angular/core';
+import { pingTestServer, sendTestResults } from 'office-addin-test-helpers';
+import * as testHelpers from './test-helpers';
+import * as excel from '../../../src/app/excel.app.component';
 
 /* global Office, Excel*/
 const port: number = 4201;
 let testValues: any = [];
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./app.component.html",
+  selector: 'app-home',
+  templateUrl: './app.component.html',
 })
 export default class AppComponent {
-  welcomeMessage = "Welcome";
+  welcomeMessage = 'Welcome';
   constructor() {
     Office.onReady(async () => {
       const testServerResponse: object = await pingTestServer(port);
-      if (testServerResponse["status"] == 200) {
+      if (testServerResponse['status'] == 200) {
         this.runTest();
       }
     });
@@ -33,11 +33,11 @@ export default class AppComponent {
       await Excel.run(async (context) => {
         const range = context.workbook.getSelectedRange();
         const cellFill = range.format.fill;
-        cellFill.load("color");
+        cellFill.load('color');
         await context.sync();
         await testHelpers.sleep(2000);
 
-        testHelpers.addTestResult(testValues, "fill-color", cellFill.color, "#FFFF00");
+        testHelpers.addTestResult(testValues, 'fill-color', cellFill.color, '#FFFF00');
         await sendTestResults(testValues, port);
         testValues.pop();
         await testHelpers.closeWorkbook();

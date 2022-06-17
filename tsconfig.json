@@ -2,9 +2,9 @@
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "jsx": "react",
     "noEmitOnError": true,
     "outDir": "lib",
     "sourceMap": true,
@@ -15,6 +15,7 @@
     ]
   },
   "exclude": [
+    "**/*.spec.ts",
     "node_modules",
     "dist",
     "lib",
@@ -22,5 +23,11 @@
   ],
   "ts-node": { 
     "files": true 
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   }
 }

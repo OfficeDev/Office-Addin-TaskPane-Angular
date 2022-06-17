@@ -1,20 +1,20 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 /* global Office, console */
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./app.component.html",
+  selector: 'app-home',
+  templateUrl: './app.component.html',
 })
 export default class AppComponent {
-  welcomeMessage = "Welcome";
+  welcomeMessage = 'Welcome';
 
   async run() {
     /**
      * Insert your PowerPoint code here
      */
     Office.context.document.setSelectedDataAsync(
-      "Hello World!",
+      'Hello World!',
       {
         coercionType: Office.CoercionType.Text,
       },

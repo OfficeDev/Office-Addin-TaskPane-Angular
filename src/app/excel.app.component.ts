@@ -1,13 +1,13 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 /* global console, Excel */
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./app.component.html",
+  selector: 'app-home',
+  templateUrl: './app.component.html',
 })
 export default class AppComponent {
-  welcomeMessage = "Welcome";
+  welcomeMessage = 'Welcome';
 
   async run() {
     try {
@@ -18,10 +18,10 @@ export default class AppComponent {
         const range = context.workbook.getSelectedRange();
 
         // Read the range address
-        range.load("address");
+        range.load('address');
 
         // Update the fill color
-        range.format.fill.color = "yellow";
+        range.format.fill.color = 'yellow';
 
         await context.sync();
         console.log(`The range address was ${range.address}.`);

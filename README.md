@@ -6,7 +6,7 @@ This repository contains the source code used by the [Yo Office generator](https
 
 ## TypeScript
 
-This template is written using [TypeScript](http://www.typescriptlang.org/). For the JavaScript version of this template, go to [Office-Addin-TaskPane-Angular-JS](https://github.com/OfficeDev/Office-Addin-TaskPane-Angular-JS).
+This template is written using [TypeScript](http://www.typescriptlang.org/).
 
 ## Debugging
 

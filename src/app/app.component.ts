@@ -1,18 +1,18 @@
-import { Component } from "@angular/core";
-import * as excel from "./excel.app.component";
-import * as onenote from "./onenote.app.component";
-import * as outlook from "./outlook.app.component";
-import * as powerpoint from "./powerpoint.app.component";
-import * as project from "./project.app.component";
-import * as word from "./word.app.component";
+import { Component } from '@angular/core';
+import * as excel from './excel.app.component';
+import * as onenote from './onenote.app.component';
+import * as outlook from './outlook.app.component';
+import * as powerpoint from './powerpoint.app.component';
+import * as project from './project.app.component';
+import * as word from './word.app.component';
 /* global Office */
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./app.component.html",
+  selector: 'app-home',
+  templateUrl: './app.component.html',
 })
 export default class AppComponent {
-  welcomeMessage = "Welcome";
+  welcomeMessage = 'Welcome';
 
   async run() {
     switch (Office.context.host) {

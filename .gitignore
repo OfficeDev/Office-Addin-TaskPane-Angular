@@ -1,5 +1,11 @@
 # Build output
 dist/
+tmp/
+out-tsc/
+bazel-out/
 
 # Node modules folder
 node_modules/
+
+# Angular
+/.angular/cache
