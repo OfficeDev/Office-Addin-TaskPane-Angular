@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 /* global Word */
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './app.component.html',
+  selector: "app-home",
+  templateUrl: "./app.component.html",
 })
 export default class AppComponent {
-  welcomeMessage = 'Welcome';
+  welcomeMessage = "Welcome";
 
   async run() {
     return Word.run(async (context) => {
@@ -16,10 +16,10 @@ export default class AppComponent {
        */
 
       // insert a paragraph at the end of the document.
-      const paragraph = context.document.body.insertParagraph('Hello World', Word.InsertLocation.end);
+      const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.end);
 
       // change the paragraph color to blue.
-      paragraph.font.color = 'blue';
+      paragraph.font.color = "blue";
 
       await context.sync();
     });

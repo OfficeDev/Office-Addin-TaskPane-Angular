@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 /* global Office, console*/
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './app.component.html',
+  selector: "app-home",
+  templateUrl: "./app.component.html",
 })
 export default class AppComponent {
-  welcomeMessage = 'Welcome';
+  welcomeMessage = "Welcome";
 
   async run() {
     try {
@@ -19,7 +19,7 @@ export default class AppComponent {
 
           // Set the specified fields for the selected task.
           const targetFields = [Office.ProjectTaskFields.Name, Office.ProjectTaskFields.Notes];
-          const fieldValues = ['New task name', 'Notes for the task.'];
+          const fieldValues = ["New task name", "Notes for the task."];
 
           // Set the field value. If the call is successful, set the next field.
           for (let index = 0; index < targetFields.length; index++) {
