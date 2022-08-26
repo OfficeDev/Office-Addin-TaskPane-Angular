@@ -40,8 +40,8 @@ async function convertProjectToSingleHost(host) {
   await writeFileAsync(`./manifest.xml`, manifestContent);
 
   // copy over host-specific taskpane code to taskpane.ts
-  const srcContent = await readFileAsync(`./src/taskpane/app/${host}.app.component.ts`, "utf8");
-  await writeFileAsync(`./src/taskpane/app/app.component.ts`, srcContent);
+  const srcContent = await readFileAsync(`./src/app/${host}.app.component.ts`, "utf8");
+  await writeFileAsync(`./src/app/app.component.ts`, srcContent);
 
   // delete all test files by default for now - eventually we want to convert the tests by default
   if (convertTest && (host === "excel" || host === "word")) {
@@ -71,7 +71,7 @@ async function convertProjectToSingleHost(host) {
   // delete all host-specific files
   hosts.forEach(async function (host) {
     await unlinkFileAsync(`./manifest.${host}.xml`);
-    await unlinkFileAsync(`./src/taskpane/app/${host}.app.component.ts`);
+    await unlinkFileAsync(`./src/app/${host}.app.component.ts`);
   });
 
   // delete the .github folder

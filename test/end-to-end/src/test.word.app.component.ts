@@ -1,22 +1,22 @@
-import { Component } from "@angular/core";
-import { pingTestServer, sendTestResults } from "office-addin-test-helpers";
-import * as testHelpers from "./test-helpers";
-import * as word from "../../../src/taskpane/app/word.app.component";
+import { Component } from '@angular/core';
+import { pingTestServer, sendTestResults } from 'office-addin-test-helpers';
+import * as testHelpers from './test-helpers';
+import * as word from '../../../src/app/word.app.component';
 
 /* global Office, Word */
 const port: number = 4201;
 let testValues: any = [];
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./app.component.html",
+  selector: 'app-home',
+  templateUrl: './app.component.html',
 })
 export default class AppComponent {
-  welcomeMessage = "Welcome";
+  welcomeMessage = 'Welcome';
   constructor() {
     Office.onReady(async () => {
       const testServerResponse: object = await pingTestServer(port);
-      if (testServerResponse["status"] == 200) {
+      if (testServerResponse['status'] == 200) {
         this.runTest();
       }
     });
@@ -32,11 +32,11 @@ export default class AppComponent {
       // Get output of executed taskpane code
       Word.run(async (context) => {
         var firstParagraph = context.document.body.paragraphs.getFirst();
-        firstParagraph.load("text");
+        firstParagraph.load('text');
         await context.sync();
         await testHelpers.sleep(2000);
 
-        testHelpers.addTestResult(testValues, "output-message", firstParagraph.text, "Hello World");
+        testHelpers.addTestResult(testValues, 'output-message', firstParagraph.text, 'Hello World');
         await sendTestResults(testValues, port);
         testValues.pop();
         Promise.resolve();

@@ -1,27 +1,27 @@
-import * as childProcess from "child_process";
+import * as childProcess from 'child_process';
 
 /* global Excel, process, Promise, setTimeout */
 
 export async function closeDesktopApplication(application: string): Promise<boolean> {
-  let processName: string = "";
+  let processName: string = '';
   switch (application.toLowerCase()) {
-    case "excel":
-      processName = "Excel";
+    case 'excel':
+      processName = 'Excel';
       break;
-    case "powerpoint":
-      processName = process.platform === "win32" ? "Powerpnt" : "PowerPoint";
+    case 'powerpoint':
+      processName = process.platform === 'win32' ? 'Powerpnt' : 'PowerPoint';
       break;
-    case "onenote":
-      processName = "Onenote";
+    case 'onenote':
+      processName = 'Onenote';
       break;
-    case "outlook":
-      processName = "Outlook";
+    case 'outlook':
+      processName = 'Outlook';
       break;
-    case "project":
-      processName = "Project";
+    case 'project':
+      processName = 'Project';
       break;
-    case "word":
-      processName = process.platform === "win32" ? "Winword" : "Word";
+    case 'word':
+      processName = process.platform === 'win32' ? 'Winword' : 'Word';
       break;
     default:
       throw new Error(`${application} is not a valid Office desktop application.`);
@@ -29,7 +29,7 @@ export async function closeDesktopApplication(application: string): Promise<bool
 
   try {
     let cmdLine: string;
-    if (process.platform == "win32") {
+    if (process.platform == 'win32') {
       cmdLine = `tskill ${processName}`;
     } else {
       cmdLine = `pkill ${processName}`;
@@ -47,10 +47,10 @@ export async function closeWorkbook(): Promise<void> {
 }
 
 export function addTestResult(testValues: any[], resultName: string, resultValue: any, expectedValue: any) {
-  var data = {};
-  data["expectedValue"] = expectedValue;
-  data["resultName"] = resultName;
-  data["resultValue"] = resultValue;
+  var data: any = {};
+  data['expectedValue'] = expectedValue;
+  data['resultName'] = resultName;
+  data['resultValue'] = resultValue;
   testValues.push(data);
 }
 

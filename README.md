@@ -4,9 +4,13 @@ This repository contains the source code used by the [Yo Office generator](https
 
 *Note that current versions of Angular do not support IE (Internet Explorer).  This means that versions of office that use the IE version of the web view will not work with and Angular base Office Add-in
 
+## Angular CLI
+
+This project support [Angular CLI](https://angular.io/cli/). Use `npm run ng` to access the CLI commands.
+
 ## TypeScript
 
-This template is written using [TypeScript](http://www.typescriptlang.org/). For the JavaScript version of this template, go to [Office-Addin-TaskPane-Angular-JS](https://github.com/OfficeDev/Office-Addin-TaskPane-Angular-JS).
+This template is written using [TypeScript](http://www.typescriptlang.org/).
 
 ## Debugging
 

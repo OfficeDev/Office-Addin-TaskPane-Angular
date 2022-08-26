@@ -1,7 +1,7 @@
-import * as assert from "assert";
-import "mocha";
-import { OfficeMockObject } from "office-addin-mock";
-import * as wordComponent from "../../src/taskpane/app/word.app.component";
+import * as assert from 'assert';
+import 'mocha';
+import { OfficeMockObject } from 'office-addin-mock';
+import * as wordComponent from '../../src/app/word.app.component';
 
 /* global describe, global, it, Word */
 
@@ -11,9 +11,10 @@ const WordMockData = {
       body: {
         paragraph: {
           font: {},
-          text: "",
+          text: '',
+          insertLocation: {},
         },
-        insertParagraph: function (paragraphText: string, insertLocation: Word.InsertLocation): Word.Paragraph {
+        insertParagraph: function (paragraphText: string, insertLocation: Word.InsertLocation): any {
           this.paragraph.text = paragraphText;
           this.paragraph.insertLocation = insertLocation;
           return this.paragraph;
@@ -22,9 +23,9 @@ const WordMockData = {
     },
   },
   InsertLocation: {
-    end: "End",
+    end: 'End',
   },
-  run: async function (callback) {
+  run: async function (callback: any) {
     await callback(this.context);
   },
 };
@@ -33,8 +34,8 @@ const OfficeMockData = {
   onReady: async function () {},
 };
 
-describe("Word", function () {
-  it("Run", async function () {
+describe('Word', function () {
+  it('Run', async function () {
     const wordMock: OfficeMockObject = new OfficeMockObject(WordMockData); // Mocking the host specific namespace
     global.Word = wordMock as any;
     global.Office = new OfficeMockObject(OfficeMockData) as any; // Mocking the common office-js namespace
@@ -42,6 +43,6 @@ describe("Word", function () {
     const word = new wordComponent.default();
     await word.run();
 
-    assert.strictEqual(wordMock.context.document.body.paragraph.font.color, "blue");
+    assert.strictEqual(wordMock.context.document.body.paragraph.font.color, 'blue');
   });
 });

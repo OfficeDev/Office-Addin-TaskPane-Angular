@@ -74,13 +74,13 @@ module.exports = async (env, options) => {
       }),
       new HtmlWebpackPlugin({
         filename: "app.component.html",
-        template: "./src/taskpane/app/app.component.html",
+        template: "./src/app/app.component.html",
         chunks: ["polyfill", "app.component"],
       }),
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: "assets/*",
+            from: "src/assets/*",
             to: "assets/[name][ext][query]",
           },
         ],
